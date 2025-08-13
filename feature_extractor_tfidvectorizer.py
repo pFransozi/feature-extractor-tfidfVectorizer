@@ -58,12 +58,12 @@ def build_tfidf_dataset(goodware_dir: str, malware_dir:str
     labels = g_labels + m_labels
 
     vectorizer = TfidfVectorizer(
-        lowercase=False
-        ,tokenizer=str.split
-        ,preprocessor=None
+        lowercase=False # lowercase=False, “Write” ≠ “write” (são features distintas).
+        ,tokenizer=str.split # divide por qualquer whitespace
+        ,preprocessor=None #usar o pré-processador padrão do scikit-learn
         ,token_pattern=None
-        ,min_df=min_df
-        ,max_df=max_df
+        ,min_df=min_df # mínimo de occurs nos docs
+        ,max_df=max_df # max de occurs nos docs
     )
 
     # TF (Term Frequency) = quão frequente o evento aparece nesse CSV específico.
