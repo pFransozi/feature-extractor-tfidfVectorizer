@@ -66,6 +66,9 @@ def build_tfidf_dataset(goodware_dir: str, malware_dir:str
         ,max_df=max_df
     )
 
+    # TF (Term Frequency) = quão frequente o evento aparece nesse CSV específico.
+    # IDF (Inverse Document Frequency) = quão raro esse evento é considerando todos os CSVs lidos (o “global”).
+    # O valor na célula é TF × IDF
     X = vectorizer.fit_transform(csvs_events)
 
     feature_names = [f"{t}" for t in vectorizer.get_feature_names_out()]
